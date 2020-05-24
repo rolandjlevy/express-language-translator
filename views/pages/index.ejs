@@ -1,0 +1,70 @@
+<%- include('../partials/head.ejs'); %>
+<%- include('../partials/nav.ejs'); %>
+
+<%
+
+const languages = {
+  "": "Choose...",
+  "cs": "Czech", 
+  "da": "Danish", 
+  "nl": "Dutch",
+  "en": "English", 
+  "fi": "Finnish", 
+  "fr": "French", 
+  "de": "German", 
+  "it": "Italian",
+  "pl": "Polish",
+  "pt": "Portuguese",
+  "ro": "Romanian",
+  "es": "Spanish",
+  "sv": "Swedish",
+  "tl": "Turkish",
+  "cy": "Welsh"
+}
+
+const getLanguages = (lang) => {
+  return Object.keys(languages).map((key) => {
+    const sel = (key === lang) ? ' selected' : '';
+    return `<option value="${key}"` + sel + `>${languages[key]}</option>`
+  }).join('');
+}
+
+%>
+
+<main role="main" class="container">
+  <h3 class="color-red uppercase">Translator</h3>
+  <section class="jumbotron p-4">
+    <p class="lead">Instantly translate words and phrases between any language and a selection of <%= Object.keys(languages).length-1 %> languages</p>
+
+    <form method="post" action="/translate">
+      <div class="row">
+
+        <div class="col-md-4 mb-3">
+          <input type="text" name="msg" value="<%= msg %>" class="form-control" id="msg" placeholder="Any phrase in any language..." required="">
+          <div class="invalid-feedback">
+            Message required
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3 input-group">
+          <select name="lang" class="form-control custom-select d-block w-100 m-r-10" id="lang" required="">
+          <%- getLanguages(lang) %>
+          </select> 
+          <span class="input-group-btn">
+            <button class="btn btn-danger btn-block" type="submit" id="translate"><i class="fa fa-comments" aria-hidden="true"></i></button>
+          </span>
+          <div class="invalid-feedback">
+            Please select a language in the list
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <input type="text" name="result" value="<%= result %>" class="form-control" id="result" placeholder="Translation in  chosen language...">
+        </div>
+
+      </div>
+    </form>
+  </section>
+</main>
+
+<%- include('../partials/footer.ejs'); %>

@@ -1,0 +1,55 @@
+body {
+  margin: 1rem;
+  box-sizing: border-box;
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.jumbotron {
+  background-color: #e9ecef85 !important;
+}
+
+input, select {
+  color: black;
+}
+
+h1, h2, h3 {
+  letter-spacing: 1px;
+  /* font-family: 'Roboto Slab', serif;
+  font-family: 'Raleway', sans-serif; */
+  font-family: 'Nunito', sans-serif;
+}
+
+*::placeholder {
+  color: rgb(210, 210, 210) !important;
+}
+
+input, select, option {
+  color: black !important;
+}
+
+.lead {
+  font-size: 18px;
+}
+
+.m-t-100 {
+  margin-top: 100px;
+}
+
+.m-r-10 {
+  margin-right: 10px;
+}
+
+.color-red {
+  color: #e82f3a;
+}
+
+.background-red {
+  background: #e82f3a;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
