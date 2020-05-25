@@ -3,25 +3,34 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const emojiFlags = require('emoji-flags');
+
+let uri = '/';
+
 app.set('view engine', 'ejs');
-app.use(express.static('public'))
+app.use(express.static('public'));
+
+app.use((req, res, next) => {
+  uri = req.originalUrl;
+  next();
+});
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.render('pages/index', { msg:'', result:'', lang:'en', uri:req.originalUrl });
+  res.render('pages/index', { msg:'', result:'', lang:'en', uri, emojiFlags });
 });
 
 app.get('/about', (req, res) => {
-  res.render('pages/about', { uri:req.originalUrl });
+  res.render('pages/about', { uri });
 });
 
 app.post('/translate', async (req, res) => {
   const { msg, lang } = req.body;
   const result = await translation(msg, lang);
-  res.render('pages/index', { msg, result, lang, uri:req.originalUrl });
+  res.render('pages/index', { msg, result, lang, uri, emojiFlags });
 });
 
 function translation(msg, lang) {

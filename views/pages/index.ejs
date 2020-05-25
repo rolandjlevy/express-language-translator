@@ -3,30 +3,36 @@
 
 <%
 
-const languages = {
-  "": "Choose...",
-  "cs": "Czech", 
-  "da": "Danish", 
-  "nl": "Dutch",
-  "en": "English", 
-  "fi": "Finnish", 
-  "fr": "French", 
-  "de": "German", 
-  "it": "Italian",
-  "pl": "Polish",
-  "pt": "Portuguese",
-  "ro": "Romanian",
-  "es": "Spanish",
-  "sv": "Swedish",
-  "tl": "Turkish",
-  "cy": "Welsh"
-}
+const languages = [
+  { emoji: "GB", lang: "__", "label": "Choose..." },
+  { emoji: "CZ", lang: "cs", "label": "Czech" }, 
+  { emoji: "DK", lang: "da", "label": "Danish" }, 
+  { emoji: "NL", lang: "nl", "label": "Dutch" },
+  { emoji: "GB", lang: "en", "label": "English" }, 
+  { emoji: "FI", lang: "fi", "label": "Finnish" }, 
+  { emoji: "FR", lang: "fr", "label": "French" }, 
+  { emoji: "DE", lang: "de", "label": "German" }, 
+  { emoji: "IT", lang: "it", "label": "Italian" },
+  { emoji: "PL", lang: "pl", "label": "Polish" },
+  { emoji: "PT", lang: "pt", "label": "Portuguese" },
+  { emoji: "RO", lang: "ro", "label": "Romanian" },
+  { emoji: "ES", lang: "es", "label": "Spanish" },
+  { emoji: "SE", lang: "sv", "label": "Swedish" },
+  { emoji: "TR", lang: "tl", "label": "Turkish" }
+];
 
 const getLanguages = (lang) => {
-  return Object.keys(languages).map((key) => {
-    const sel = (key === lang) ? ' selected' : '';
-    return `<option value="${key}"` + sel + `>${languages[key]}</option>`
+  const found = languages.find(item => item.lang == lang);
+  return languages.map((item) => {
+    const sel = (item.lang === lang) ? ' selected' : '';
+    return `<option value="${item.lang}"` + sel + `>${item.label}</option>`
   }).join('');
+}
+
+const getEmoji = (lang) => {
+  const found = languages.find(item => item.lang == lang);
+  const flag = emojiFlags.countryCode(found.emoji);
+  return flag.emoji;
 }
 
 %>
@@ -58,8 +64,11 @@ const getLanguages = (lang) => {
           </div>
         </div>
 
-        <div class="col-md-4 mb-3">
-          <input type="text" name="result" value="<%= result %>" class="form-control" id="result" placeholder="Translation in  chosen language...">
+        <div class="col-md-4 mb-3 input-group">
+          <input type="text" name="result" value="<%= result %>" class="form-control" id="result" placeholder="Translation in chosen language %>"> 
+          <span class="input-group-btn">
+            <div class="flag"><%= getEmoji(lang) %></div>
+          </span>
         </div>
 
       </div>
