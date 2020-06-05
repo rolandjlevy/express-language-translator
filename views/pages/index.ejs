@@ -25,12 +25,14 @@ const getLanguages = (lang) => {
   const found = languages.find(item => item.lang == lang);
   return languages.map((item) => {
     const sel = (item.lang === lang) ? ' selected' : '';
-    const emoji = item.lang == 'na' ? '' : getEmoji(item.lang);
-    return `<option value="${item.lang}"` + sel + `>${emoji} ${item.label}</option>`
+    const emoji = item.lang === 'na' ? '' : getEmoji(item.lang);
+    const currentLang = item.lang === 'na' ? '' : item.lang;
+    return `<option value="${currentLang}"` + sel + `>${emoji} ${item.label}</option>`
   }).join('');
 }
 
-const getEmoji = (lang) => {
+const getEmoji = (lang, type = 'select') => {
+  if (!msg && type === 'div') return null;
   const found = languages.find(item => item.lang == lang);
   return found.emoji == 'na' ? '' : emojiFlags.countryCode(found.emoji).emoji;
 }
@@ -67,7 +69,7 @@ const getEmoji = (lang) => {
         <div class="col-md-4 mb-3 input-group">
           <input type="text" name="result" value="<%= result %>" class="form-control" id="result" placeholder="Translation in chosen language %>"> 
           <span class="input-group-btn">
-            <div class="flag"><%= getEmoji(lang) %></div>
+            <div class="flag"><%= getEmoji(lang, 'div') %></div>
           </span>
         </div>
 

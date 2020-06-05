@@ -36,7 +36,7 @@ app.post('/translate', async (req, res) => {
 function translation(msg, lang) {
   return translate(msg, {to: lang})
     .then(res => {
-      console.log('Originating language is', res.from.language.iso);
+      // console.log('Originating language is', res.from.language.iso);
       return res.text;
     })
     .catch(err => {
