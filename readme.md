@@ -9,3 +9,5 @@
 - [Live demo](https://express-google-translate-api-with-ejs--rjlevy.repl.co/) 
 - [Source code](https://repl.it/@rjlevy/express-google-translate-api-with-ejs) 
 - [Github](https://github.com/rolandjlevy/express-google-translate-api-with-ejs)
+
+![Screenshot of Translator](https://express-google-translate-api-with-ejs.rjlevy.repl.co/images/device-screenshot.png "Screenshot of Translator")
