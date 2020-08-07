@@ -12,9 +12,8 @@ app.use((req, res, next) => {
   next();
 });
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 const { Languages } = require('./config.js');
 const languages = new Languages(emojiFlags);
