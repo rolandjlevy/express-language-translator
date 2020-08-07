@@ -52,6 +52,10 @@ input, select, option {
   margin-left: 10px;
 }
 
+.m-b-10 {
+  margin-bottom: 10px;
+}
+
 .color-red {
   color: #e82f3a;
 }

@@ -39,7 +39,7 @@ module.exports.Languages = class {
       const sel = (item.lang === lang) ? ' selected' : '';
       const emoji = item.lang === 'na' ? '' : this.getEmoji(item.lang);
       const currentLang = item.lang === 'na' ? '' : item.lang;
-      return `<option value="${currentLang}"` + sel + `>${emoji} ${item.label}</option>`
+      return `<option value="${currentLang}"` + sel + `>${emoji}&nbsp;&nbsp;${item.label}</option>`
     }).join('');
   }
   getEmoji(lang, msg, type = 'select') {
