@@ -3,6 +3,8 @@ module.exports.Languages = class {
     this.emojiFlags = emojiFlags;
     this.list = [
       { emoji: 'na', lang: 'na', 'label': 'Choose...' },
+      { emoji: 'AE', lang: 'ar', 'label': 'Arabic' },
+      // { emoji: 'SA', lang: 'ar', 'label': 'Arabic (Saudi Arabia)' },
       { emoji: 'BG', lang: 'bg', 'label': 'Bulgarian' }, 
       { emoji: 'CZ', lang: 'cs', 'label': 'Czech' }, 
       { emoji: 'DK', lang: 'da', 'label': 'Danish' }, 
