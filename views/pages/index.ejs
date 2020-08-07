@@ -10,7 +10,7 @@
       <div class="row">
 
         <div class="col-md-4 mb-3">
-          <input type="text" name="msg" value="<%= msg %>" class="form-control" id="msg" placeholder="Any phrase in any language..." required="">
+          <textarea name="msg" class="form-control" id="msg" placeholder="Any phrase in any language..." required=""><%= msg %></textarea>
           <div class="invalid-feedback">
             Message required
           </div>
@@ -29,9 +29,9 @@
         </div>
 
         <div class="col-md-4 mb-3 input-group">
-          <input type="text" name="result" value="<%= result %>" class="form-control" id="result" placeholder="Translation in chosen language"> 
+          <textarea name="result" class="form-control" id="result" placeholder="Translation in chosen language"><%= result %></textarea>
           <span class="input-group-btn">
-            <div class="flag"><%= languages.getEmoji(lang, msg, 'div') %></div>
+            <div class="flag<%= msg ? ' m-l-10' : ''; %>"><%= languages.getEmoji(lang, msg, 'div') %></div>
           </span>
         </div>
 

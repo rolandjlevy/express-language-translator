@@ -45,6 +45,7 @@ module.exports.Languages = class {
   getEmoji(lang, msg, type = 'select') {
     if (!msg && type === 'div') return null;
     const found = this.list.find(item => item.lang == lang);
-    return found.emoji == 'na' ? '' : this.emojiFlags.countryCode(found.emoji).emoji;
+    const flag = this.emojiFlags.countryCode(found.emoji).emoji;
+    return found.emoji == 'na' ? '' : flag;
   }
 }
