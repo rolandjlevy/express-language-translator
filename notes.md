@@ -1,10 +1,12 @@
 Resources
 ===
-+ [Node package](https://www.npmjs.com/package/@vitalets/google-translate-api)
-+ [Video tutorial on google-translate-api](https://www.youtube.com/watch?v=zFwJUcuxK9Y)
-+ [node-emoji](https://www.npmjs.com/package/node-emoji)
-+ [emoji-flags](https://www.npmjs.com/package/emoji-flags)
-+ [country codes](https://apps.timwhitlock.info/emoji/tables/iso3166)
++  Google translate API [Node package](https://www.npmjs.com/package/@vitalets/google-translate-api)
++ Google translate API [Video tutorial](https://www.youtube.com/watch?v=zFwJUcuxK9Y)
++ emoji-flags [Node package](https://www.npmjs.com/package/emoji-flags)
++ [Check country codes for emojis](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
++ [Check language code (lang) supported by Google Translate](https://www.labnol.org/code/19899-google-translate-languages)
++ Didn't use [node-emoji](https://www.npmjs.com/package/node-emoji)
++ modules [tutorial](https://www.tutorialsteacher.com/nodejs/nodejs-module-exports)
 
 Ideas
 ===

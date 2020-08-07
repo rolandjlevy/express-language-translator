@@ -1,48 +1,10 @@
 <%- include('../partials/head.ejs'); %>
 <%- include('../partials/nav.ejs'); %>
 
-<%
-
-const languages = [
-  { emoji: "na", lang: "na", "label": "Choose..." },
-  { emoji: "CZ", lang: "cs", "label": "Czech" }, 
-  { emoji: "DK", lang: "da", "label": "Danish" }, 
-  { emoji: "NL", lang: "nl", "label": "Dutch" },
-  { emoji: "GB", lang: "en", "label": "English" }, 
-  { emoji: "FI", lang: "fi", "label": "Finnish" }, 
-  { emoji: "FR", lang: "fr", "label": "French" }, 
-  { emoji: "DE", lang: "de", "label": "German" }, 
-  { emoji: "IT", lang: "it", "label": "Italian" },
-  { emoji: "PL", lang: "pl", "label": "Polish" },
-  { emoji: "PT", lang: "pt", "label": "Portuguese" },
-  { emoji: "RO", lang: "ro", "label": "Romanian" },
-  { emoji: "ES", lang: "es", "label": "Spanish" },
-  { emoji: "SE", lang: "sv", "label": "Swedish" },
-  { emoji: "TR", lang: "tl", "label": "Turkish" }
-];
-
-const getLanguages = (lang) => {
-  const found = languages.find(item => item.lang == lang);
-  return languages.map((item) => {
-    const sel = (item.lang === lang) ? ' selected' : '';
-    const emoji = item.lang === 'na' ? '' : getEmoji(item.lang);
-    const currentLang = item.lang === 'na' ? '' : item.lang;
-    return `<option value="${currentLang}"` + sel + `>${emoji} ${item.label}</option>`
-  }).join('');
-}
-
-const getEmoji = (lang, type = 'select') => {
-  if (!msg && type === 'div') return null;
-  const found = languages.find(item => item.lang == lang);
-  return found.emoji == 'na' ? '' : emojiFlags.countryCode(found.emoji).emoji;
-}
-
-%>
-
 <main role="main" class="container">
   <h3 class="color-red uppercase">Translator</h3>
   <section class="jumbotron p-4">
-    <p class="lead">Instantly translate words and phrases between any language and a selection of <%= Object.keys(languages).length-1 %> languages</p>
+    <p class="lead">Instantly translate words and phrases between any language and a selection of <%= Object.keys(languages.list).length-1 %> languages</p>
 
     <form method="post" action="/translate">
       <div class="row">
@@ -56,7 +18,7 @@ const getEmoji = (lang, type = 'select') => {
 
         <div class="col-md-4 mb-3 input-group">
           <select name="lang" class="form-control custom-select d-block w-100 m-r-10" id="lang" required="">
-          <%- getLanguages(lang) %>
+          <%- languages.getMenu(lang) %>
           </select> 
           <span class="input-group-btn">
             <button class="btn btn-danger btn-block" type="submit" id="translate"><i class="fa fa-comments" aria-hidden="true"></i></button>
@@ -67,9 +29,9 @@ const getEmoji = (lang, type = 'select') => {
         </div>
 
         <div class="col-md-4 mb-3 input-group">
-          <input type="text" name="result" value="<%= result %>" class="form-control" id="result" placeholder="Translation in chosen language %>"> 
+          <input type="text" name="result" value="<%= result %>" class="form-control" id="result" placeholder="Translation in chosen language"> 
           <span class="input-group-btn">
-            <div class="flag"><%= getEmoji(lang, 'div') %></div>
+            <div class="flag"><%= languages.getEmoji(lang, msg, 'div') %></div>
           </span>
         </div>
 

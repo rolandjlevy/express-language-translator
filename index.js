@@ -1,17 +1,14 @@
 const translate = require('@vitalets/google-translate-api');
+const emojiFlags = require('emoji-flags');
 const express = require('express');
 const app = express();
 const port = 3000;
-
-const emojiFlags = require('emoji-flags');
-
-let uri = '/';
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.use((req, res, next) => {
-  uri = req.originalUrl;
+  res.locals.uri = req.originalUrl;
   next();
 });
 
@@ -19,18 +16,33 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const { Languages } = require('./config.js');
+const languages = new Languages(emojiFlags);
+
 app.get('/', (req, res) => {
-  res.render('pages/index', { msg:'', result:'', lang:'en', uri, emojiFlags });
+  res.render('pages/index', { 
+    msg:'', 
+    result:'', 
+    lang:'en',
+    uri: res.locals.uri,
+    languages
+  });
 });
 
 app.get('/about', (req, res) => {
-  res.render('pages/about', { uri });
+  res.render('pages/about', { uri: res.locals.uri });
 });
 
 app.post('/translate', async (req, res) => {
   const { msg, lang } = req.body;
   const result = await translation(msg, lang);
-  res.render('pages/index', { msg, result, lang, uri, emojiFlags });
+  res.render('pages/index', { 
+    msg, 
+    result, 
+    lang, 
+    uri: res.locals.uri,
+    languages
+  });
 });
 
 function translation(msg, lang) {
