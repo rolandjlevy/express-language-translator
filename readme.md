@@ -9,9 +9,9 @@ Instantly translate words and phrases between any language and a selection of 28
 - Favourites are saved in localstorage
 - Emoji flags from [emoji-flags npm](https://www.npmjs.com/package/emoji-flags)
 
-#### Links 🔗
+### Links 🔗
 - [Live demo](https://express-google-translate-api-with-ejs--rjlevy.repl.co/) 
 - [Source code](https://repl.it/@rjlevy/express-google-translate-api-with-ejs) 
-- [Github](https://github.com/rolandjlevy/express-google-translate-api-with-ejs)
+- [Github repo](https://github.com/rolandjlevy/express-google-translate-api-with-ejs)
 
 ![Screenshot of Translator](https://express-google-translate-api-with-ejs.rjlevy.repl.co/images/device-screenshot.png "Screenshot of Translator")
