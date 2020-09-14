@@ -1,4 +1,4 @@
-# Google Translator
+# Translator using Google Translate API
 
 Instantly translate words and phrases between any language and a selection of 28 languages
 
