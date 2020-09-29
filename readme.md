@@ -10,7 +10,7 @@ Instantly translate words and phrases between any language and a selection of 28
 - Emoji flags from [emoji-flags npm](https://www.npmjs.com/package/emoji-flags)
 
 ### Links 🔗
-- [Live demo](https://express-google-translate-api-with-ejs--rjlevy.repl.co/) 
+- [Live demo](https://express-google-translate-api-with-ejs.rjlevy.repl.co/) 
 - [Source code](https://repl.it/@rjlevy/express-google-translate-api-with-ejs) 
 - [Github repo](https://github.com/rolandjlevy/express-google-translate-api-with-ejs)
 
