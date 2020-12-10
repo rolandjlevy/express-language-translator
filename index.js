@@ -1,8 +1,11 @@
 const translate = require('@vitalets/google-translate-api');
+const token = require('@vitalets/google-translate-token');
+token.get('Hello').then(console.log);
+//=> { name: 'tk', value: '159402.284291' }
 const emojiFlags = require('emoji-flags');
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -19,10 +22,10 @@ const { Languages } = require('./config.js');
 const languages = new Languages(emojiFlags);
 
 app.get('/', (req, res) => {
-  res.render('pages/index', { 
-    msg:'', 
-    result:'', 
-    lang:'en',
+  res.render('pages/index', {
+    msg: '',
+    result: '',
+    lang: 'en',
     uri: res.locals.uri,
     languages
   });
@@ -35,24 +38,24 @@ app.get('/about', (req, res) => {
 app.post('/translate', async (req, res) => {
   const { msg, lang } = req.body;
   const result = await translation(msg, lang);
-  res.render('pages/index', { 
-    msg, 
-    result, 
-    lang, 
+  res.render('pages/index', {
+    msg,
+    result,
+    lang,
     uri: res.locals.uri,
     languages
   });
 });
 
 function translation(msg, lang) {
-  return translate(msg, {to: lang})
+  return translate(msg, { client: 'gtx', to: lang })
     .then(res => {
       // console.log('Originating language is', res.from.language.iso);
       return res.text;
     })
     .catch(err => {
       console.error(err);
-  });
+    });
 }
 
 app.listen(port, () => {
