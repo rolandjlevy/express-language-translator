@@ -10,8 +10,8 @@ Instantly translate words and phrases between any language and a selection of 28
 - Emoji flags from [emoji-flags npm](https://www.npmjs.com/package/emoji-flags)
 
 ### Links 🔗
-- [Live demo](https://express-language-translator.rolandjlevy.repl.co) 
-- [Source code](https://repl.it/@RolandJLevy/express-language-translator) 
-- [Github repo](https://github.com/rolandjlevy/express-language-translator)
+- [See live demo](https://express-language-translator.rolandjlevy.repl.co) 
+- [View source code](https://repl.it/@RolandJLevy/express-language-translator)
+- [Explore Github repo](https://github.com/rolandjlevy/express-language-translator)
 
 ![Screenshot of Translator](https://express-google-translate-api-with-ejs.rjlevy.repl.co/images/device-screenshot.png "Screenshot of Translator")
